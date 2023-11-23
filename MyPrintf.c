@@ -42,7 +42,7 @@ int printDigit(long n, int base)
 {
 	int count = 0, i = 0, index = 0;
 	char *digits = "0123456789";
-	char buffer[32]; 
+	char buffer[32];
 
 	if (n < 0)
 	{
@@ -87,7 +87,8 @@ int specChecker(char spec, va_list ap)
 	}
 	else
 	{
-		count +=  printChar(spec);
+		count += printChar('%');
+		count += printChar(spec);
 	}
 	return (count);
 }
