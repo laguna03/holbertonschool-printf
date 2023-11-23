@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main copy.h"
 
 /**
 * printChar - Writes one char to the standard output.
@@ -19,50 +19,42 @@ int printStr(char *str)
 {
 	int count = 0, i = 0;
 
-	if (str == NULL)
+	if (*str != '\0')
 	{
-		return (write(1, "(null)", 6));
+		for (; str[i] != '\0'; i++)
+		{
+			count += (printChar(str[i]) - 1);
+		}
 	}
-
-	for (; str[i] != '\0'; i++)
-	{
-		count += printChar(str[i]);
-	}
-
 	printChar('\0');
 	return (count);
 }
 
 /**
-* printDigit - Writes a digit to the standard output.
+* printDigit - Recursively writes a digit to the standard output.
 * @n: number to write
 * @base: 10
 * Return: the count.
 */
 int printDigit(long n, int base)
 {
-	int count = 0, index = 0;
+	int count = 0;
 	char *digits = "0123456789";
-	char buffer[32]; 
 
 	if (n < 0)
 	{
 		write(1, "-", 1);
-		n = -n;
+		return (printDigit(-n, base));
 	}
-
-	do
+	else if (n < base)
 	{
-		buffer[index++] = digits[n % base];
-		n /= base;
-	} while (n > 0);
-
-	for (int i = index - 1; i >= 0; i--)
-	{
-		count += printChar(buffer[i]);
+		return (printChar(digits[n]));
 	}
-
-	return (count);
+	else
+	{
+		count = printDigit(n / base, base);
+		return (count + printDigit(n % base, base));
+	}
 }
 
 /**
@@ -77,15 +69,15 @@ int specChecker(char spec, va_list ap)
 
 	if (spec == 'c')
 	{
-		count += printChar(va_arg(ap, int));
+		count = printChar(va_arg(ap, int));
 	}
 	else if (spec == 's')
 	{
-		count += printStr(va_arg(ap, char *));
+		count = printStr(va_arg(ap, char *));
 	}
 	else if (spec == 'i' || spec == 'd')
 	{
-		count += printDigit((long)va_arg(ap, int), 10);
+		count = printDigit((long)va_arg(ap, int), 10);
 	}
 	else
 	{
@@ -121,3 +113,4 @@ int _printf(const char *format, ...)
 	va_end(ap);
 	return (count);
 }
+
