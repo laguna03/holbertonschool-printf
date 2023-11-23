@@ -23,7 +23,7 @@ int printStr(char *str)
 	{
 		for (; str[i] != '\0'; i++)
 		{
-			count += printChar(str[i]);
+			count += (printChar(str[i]) - 1);
 		}
 	}
 	printChar('\0');
