@@ -46,7 +46,7 @@ int printDigit(long n, int base)
 
 	if (n < 0)
 	{
-		write(1, "-", 1);
+		count += write(1, "-", 1);
 		n = -n;
 	}
 
