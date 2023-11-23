@@ -116,14 +116,21 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			count += specChecker(format[i + 1], ap);
-			i++;
-		}
-		else
-		{
-			count += write(1, &format[i], 1);
-		}
-	}
+            if (format[i + 1] == '\0')
+            {
+                return (-1);
+            }
+            else
+            {
+                count += specChecker(format[i + 1], ap);
+            }
+            i++;
+        }
+        else
+        {
+            count += write(1, &format[i], 1);
+        }
+        }
 	va_end(ap);
 	return (count);
 }
