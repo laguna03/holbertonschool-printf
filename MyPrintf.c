@@ -19,13 +19,11 @@ int printStr(char *str)
 {
 	int count = 0, i = 0;
 
-	if (str)
+	if (*str != '\0')
 	{
-		while (str[i] != '\0')
+		for (; str[i] != '\0'; i++)
 		{
-			printChar(str[i]);
-			count++;
-			i++;
+			count += printChar(str[i]);
 		}
 	}
 	printChar('\0');
@@ -83,7 +81,7 @@ int specChecker(char spec, va_list ap)
 	}
 	else
 	{
-		count = write(1, &spec, 1);
+		count += write(1, &spec, 1);
 	}
 	return (count);
 }
@@ -104,14 +102,13 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			specChecker(format[i + 1], ap);
+			count += specChecker(format[i + 1], ap);
 			i++;
 		}
 		else
 		{
-			write(1, &format[i], 1);
+			count += write(1, &format[i], 1);
 		}
-		count++;
 	}
 	va_end(ap);
 	return (count);
