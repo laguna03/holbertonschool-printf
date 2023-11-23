@@ -28,6 +28,7 @@ int printStr(char *str)
     {
         count += printChar(str[i]);
     }
+
 	return (count);
 }
 
@@ -39,23 +40,26 @@ int printStr(char *str)
 */
 int printDigit(long n, int base)
 {
-	int count = 0;
+	int count = 0, i = 0, index = 0;
 	char *digits = "0123456789";
+    char buffer[32];
 
 	if (n < 0)
 	{
-		write(1, "-", 1);
-		return (printDigit(-n, base));
+		count += write(1, "-", 1);
+        n = -n;
 	}
-	else if (n < base)
-	{
-		return (printChar(digits[n]));
-	}
-	else
-	{
-		count = printDigit(n / base, base);
-		return (count + printDigit(n % base, base));
-	}
+
+    do {
+        buffer[index++] = digits[n % base];
+        n /= base;
+        } 
+        while (n > 0);
+        for (i = index -1; i>= 0; i--)
+        {
+            count =+printChar(buffer[i]);
+        } 
+        return (count);
 }
 
 /**
