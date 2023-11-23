@@ -6,7 +6,7 @@
 #include <limits.h>
 #include <stdio.h>
 
-char _putchar(char);
+char _putchar(char c);
 int _printf(const char *format, ...);
 int specChecker(char spec, va_list ap);
 int printChar(int);
