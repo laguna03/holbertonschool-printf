@@ -19,19 +19,22 @@ int printStr(char *str)
 {
 	int count = 0, i = 0;
 
-	if (*str != '\0')
+	if (str == NULL)
 	{
-		for (; str[i] != '\0'; i++)
-		{
-			count += (printChar(str[i]) - 1);
-		}
+		return (write(1, "(null)", 6));
 	}
+
+	for (; str[i] != '\0'; i++)
+	{
+		count += printChar(str[i]);
+	}
+
 	printChar('\0');
 	return (count);
 }
 
 /**
-* printDigit - Recursively writes a digit to the standard output.
+* printDigit - Writes a digit to the standard output.
 * @n: number to write
 * @base: 10
 * Return: the count.
@@ -44,17 +47,19 @@ int printDigit(long n, int base)
 	if (n < 0)
 	{
 		write(1, "-", 1);
-		return (printDigit(-n, base));
+		count += (printDigit(-n, base));
 	}
 	else if (n < base)
 	{
-		return (printChar(digits[n]));
+		count += (printChar(digits[n]));
 	}
 	else
 	{
-		count = printDigit(n / base, base);
-		return (count + printDigit(n % base, base));
+		count += printDigit(n / base, base);
+		count += (count + printDigit(n % base, base));
 	}
+
+	return (count);
 }
 
 /**
@@ -69,19 +74,19 @@ int specChecker(char spec, va_list ap)
 
 	if (spec == 'c')
 	{
-		count = printChar(va_arg(ap, int));
+		count += printChar(va_arg(ap, int));
 	}
 	else if (spec == 's')
 	{
-		count = printStr(va_arg(ap, char *));
+		count += printStr(va_arg(ap, char *));
 	}
 	else if (spec == 'i' || spec == 'd')
 	{
-		count = printDigit((long)va_arg(ap, int), 10);
+		count += printDigit((long)va_arg(ap, int), 10);
 	}
 	else
 	{
-		count += write(1, &spec, 1);
+		count +=  printChar(spec);
 	}
 	return (count);
 }

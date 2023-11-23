@@ -38,4 +38,27 @@ int main(void)
     printf("Len:[%d]\n", len2);
     _printf("Unknown:[%r]\n");
     return (0);
+    //  int result;
+    
+    // Test cases
+    //  result = _printf("%c\n", 'A');
+    //  printf("Result: %d\n\n", result);
+    //  
+    //  result = _printf("%s\n", "Hello, World!");
+    //  printf("Result: %d\n\n", result);
+    //  
+    //  result = _printf("%d\n", 12345);
+    //  printf("Result: %d\n\n", result);
+    //  
+    //  result = _printf("%i\n", -6789);
+    //  printf("Result: %d\n\n", result);
+    //  
+    //  result = _printf("%%\n");
+    //  printf("Result: %d\n\n", result);
+    //  
+    //  result = _printf("This is a test: %c, %s, %d, %i\n", 'X', "Test String", 9876, -5432);
+    //  printf("Result: %d\n\n", result);
+    //  
+    //  return (0);
+    //  
 }
