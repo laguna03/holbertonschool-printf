@@ -96,23 +96,23 @@ int specChecker(char spec, va_list ap)
 */
 int _printf(const char *format, ...)
 {
-	int count = 0;
+	int count = 0, i = 0;
 	va_list ap;
 
 	va_start(ap, format);
-	while (*format)
+	for (; format[i] != '\0'; i++)
 	{
-		if (*format == '%')
+		if (format[i] == '%')
 		{
-			count += specChecker(*(++format), ap);
+			specChecker(format[i + 1], ap);
+			i++;
 		}
 		else
 		{
-			count += write(1, format, 1);
+			write(1, &format[i], 1);
 		}
-		format++;
+		count++;
 	}
 	va_end(ap);
 	return (count);
 }
-
