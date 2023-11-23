@@ -12,5 +12,4 @@ int specChecker(char spec, va_list ap);
 int printChar(int);
 int printStr(char *str);
 int printDigit(long n, int base);
-
 #endif
