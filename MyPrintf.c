@@ -29,7 +29,6 @@ int printStr(char *str)
 		count += printChar(str[i]);
 	}
 
-	printChar('\0');
 	return (count);
 }
 
@@ -51,8 +50,7 @@ int printDigit(long n, int base)
 		n = -n;
 	}
 
-	do
-	{
+	do {
 		buffer[index++] = digits[n % base];
 		n /= base;
 	} while (n > 0);
@@ -104,7 +102,7 @@ int _printf(const char *format, ...)
 {
 	int count = 0, i = 0;
 	va_list ap;
-	
+
 	if (format == NULL)
 	{
 		return (-1);
