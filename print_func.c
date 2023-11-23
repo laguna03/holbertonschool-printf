@@ -1,8 +1,5 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "main.h"
+
 /**
 * printChar - Writes one char to the standard output.
 * @c: just a character
@@ -22,16 +19,15 @@ int printStr(char *str)
 {
 	int count = 0, i = 0;
 
-	if (str)
+	if (str != NULL)
 	{
-		while (str[i] != '\0')
-		{
-			printChar(str[i]);
-			count++;
-			i++;
-		}
-	}
-	printChar('\0');
+        return (write(1, "(null)", 6));
+    }
+    
+    for (;str[i] != '\0'; i++)
+    {
+        count += printChar(str[i]);
+    }
 	return (count);
 }
 
@@ -86,7 +82,7 @@ int specChecker(char spec, va_list ap)
 	}
 	else
 	{
-		count = write(1, &spec, 1);
+		count += write(1, &spec, 1);
 	}
 	return (count);
 }
@@ -99,21 +95,21 @@ int specChecker(char spec, va_list ap)
 */
 int _printf(const char *format, ...)
 {
-	int count = 0;
+	int count = 0, i = 0;
 	va_list ap;
 
 	va_start(ap, format);
-	while (*format)
+	for (; format[i] != '\0'; i++)
 	{
-		if (*format == '%')
+		if (format[i] == '%')
 		{
-			count += specChecker(*(++format), ap);
+			count += specChecker(format[i + 1], ap);
+			i++;
 		}
 		else
 		{
-			count += write(1, format, 1);
+			count += write(1, &format[i], 1);
 		}
-		format++;
 	}
 	va_end(ap);
 	return (count);
