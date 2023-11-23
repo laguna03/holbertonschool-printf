@@ -87,9 +87,17 @@ int specChecker(char spec, va_list ap)
 	}
 	else
 	{
-		count += write(1, &spec, 1);
+		if (spec != '%')
+        {
+            count += printChar('%');
+            count += printChar(spec);
+        }
+        else
+        {
+            count += printChar(spec);
+        }
 	}
-	return (count);
+    return (count);
 }
 
 /**
