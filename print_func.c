@@ -39,6 +39,7 @@ int printStr(char *str)
 * Return: the count.
 */
 int printDigit(long n, int base)
+
 {
 	int count = 0, i = 0, index = 0;
 	char *digits = "0123456789";
@@ -55,9 +56,9 @@ int printDigit(long n, int base)
         n /= base;
         } 
         while (n > 0);
-        for (i = index -1; i>= 0; i--)
+        for (i = index -1; i >= 0; i--)
         {
-            count =+printChar(buffer[i]);
+            count += printChar(buffer[i]);
         } 
         return (count);
 }
