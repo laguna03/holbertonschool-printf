@@ -104,6 +104,11 @@ int _printf(const char *format, ...)
 {
 	int count = 0, i = 0;
 	va_list ap;
+	
+	if (format == NULL)
+	{
+		return (-1);
+	}
 
 	va_start(ap, format);
 	for (; format[i] != '\0'; i++)
