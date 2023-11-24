@@ -84,6 +84,7 @@ int specChecker(char spec, va_list ap)
 	else if (spec == 'i' || spec == 'd')
 	{
 		count = printDigit((long)va_arg(ap, int), 10);
+        count = printDigit((long)va_arg(ap, int), 16);
 	}
 	else
 	{
