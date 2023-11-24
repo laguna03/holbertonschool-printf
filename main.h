@@ -13,5 +13,4 @@ int printChar(int);
 int printStr(char *str);
 int printDigit(long n, int base);
 void get_int(int num);
-
 #endif
