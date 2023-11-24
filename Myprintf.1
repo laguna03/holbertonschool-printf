@@ -1,16 +1,29 @@
-#ifndef MAIN_H
-#define MAIN_H
+.TH Myprintf.sh 1
+.SH NAME
+Myprintf.sh \- My Print Function
+.SH SYNOPSIS
 #include <stdarg.h>
+.TP
 #include <unistd.h>
+.TP
 #include <stdlib.h>
+.TP
 #include <limits.h>
+.TP
 #include <stdio.h>
-
-char _putchar(char c);
+.TP
+char_putchar(char);
+.TP
 int _printf(const char *format, ...);
+.TP
 int specChecker(char spec, va_list ap);
+.TP
 int printChar(int);
+.TP
 int printStr(char *str);
+.TP
 int printDigit(long n, int base);
-void get_int(int num);
-#endif
+.TP
+.SH DESCRIPTION
+.B Myprintf.sh
+This is a sample testing man file
