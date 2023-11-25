@@ -4,18 +4,18 @@
 A Holberton School Project
 
 ## Description:
-In this project the focus was to recreate the functionality of the well use C function "printf" in our own way.
+In this project, the focus was to recreate the functionality of the well use C function "printf" in our own way.
 
 ![carbon (2)](https://github.com/laguna03/holbertonschool-printf/assets/144173998/4057b28a-d8d3-4383-b364-da0c5dc7f5a0)
 
-For this project we needed to understand various C concepts:
+For this project, we needed to understand various C concepts:
 1. Conditional statements.
 2. Loops.
 3. Header files.
 4. Writing to the standard output.
-5. Pointers and derefrencing.
-6. How to invoking functions.
-7. Variatic functions.
+5. Pointers and dereferencing.
+6. How to invoke functions.
+7. Variadic functions.
 
 ## Caveats
 Our printf function can accept the following specifiers:
@@ -24,10 +24,10 @@ Our printf function can accept the following specifiers:
 3. %d - for a number positive or negative.
 4. %i - for a number positive or negative.
 
-At this moment any other specifier like %o or %x is not implemented.
+At this moment, any other specifier like %o or %x is not implemented.
 
 ## Contributors.
-This project was made posible by:
+This project was made possible by:
 
 Gabriel Velez - Github: GabrielVelez13
 
