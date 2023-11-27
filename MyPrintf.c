@@ -85,14 +85,6 @@ int specChecker(char spec, va_list ap)
 	{
 		count += printDigit((long)va_arg(ap, int), 10);
 	}
-	else if (spec == 'x')
-	{
-		count += printDigit((long)va_arg(ap, int), 16);
-	}
-	else if (spec == 'o')
-	{
-		count += printDigit((long)va_arg(ap, int), 8);
-	}
 	else if (spec != '%')
 	{
 		count += printChar('%');
